@@ -27,6 +27,7 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
         'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
@@ -37,5 +38,9 @@ setup(
 
     packages=find_packages(exclude=['contrib','docs','tests']),
 
-    install_requires=['numpy']
+    install_requires=['numpy','six']
+
+    extras_requires={
+        ':python_version == "2.7"':['futures']
+    }
 )

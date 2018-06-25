@@ -1,15 +1,16 @@
 import logging
-import random
 import abc
 import numpy as np
 from operator import itemgetter
 from concurrent.futures import ProcessPoolExecutor
 
+
 from ..trees import DecisionTreeRegressor
 from ..trees import DecisionTreeClassifier
+from six import add_metaclass
 
-
-class RandomForest(metaclass=abc.ABCMeta):
+@add_metaclass(abc.ABCMeta)
+class RandomForest(object):
     """
     Abstract base class for random forest algorithms. This class is not meant
     to be instanciated, ont its subclasses can be used.

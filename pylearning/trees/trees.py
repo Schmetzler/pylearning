@@ -1,13 +1,14 @@
 import random
 import abc
 import numpy as np
-from math import log2, sqrt
+#from math import log2, sqrt
 from numbers import Number
 
 from .node import DecisionNode
+from six import add_metaclass
 
-
-class DecisionTree(metaclass=abc.ABCMeta):
+@add_metaclass(abc.ABCMeta)
+class DecisionTree(object):
     """
     Abstract base class for decision trees. This class is not meant to be
     instanciated,only its subclasses can be used.
@@ -68,9 +69,9 @@ class DecisionTree(metaclass=abc.ABCMeta):
                 self.max_split_features <= len(row) else len(row)
         elif isinstance(self.max_split_features, str):
             if self.max_split_features in ['auto','sqrt']:
-                self.considered_features = int(sqrt(len(row)))
+                self.considered_features = int(np.sqrt(len(row)))
             elif self.max_split_features == 'log2':
-                self.considered_features = int(log2(len(row)))
+                self.considered_features = int(np.log2(len(row)))
         else:
             self.considered_features = len(row)
 
@@ -104,7 +105,7 @@ class DecisionTree(metaclass=abc.ABCMeta):
         ent = 0.0
         for val in results.values():
             p = float(val) / len(targets)
-            ent -= p * log2(p)
+            ent -= p * np.log2(p)
         return ent
 
 

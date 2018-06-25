@@ -1,8 +1,9 @@
 import abc
 import numpy as np
+from six import add_metaclass
 
-
-class KNN(metaclass=abc.ABCMeta):
+@add_metaclass(abc.ABCMeta)
+class KNN(object):
     """
     Abstract base class for nearest neighbours algorithms. This class is not
     meant to be instanciated, ont its subclasses can be used.
