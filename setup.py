@@ -38,9 +38,6 @@ setup(
 
     packages=find_packages(exclude=['contrib','docs','tests']),
 
-    install_requires=['numpy','six'],
+    install_requires=['numpy','six','futures;python_version<"3"']
 
-    extras_requires={
-        ':python_version == "2.7"':['futures']
-    }
 )
